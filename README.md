@@ -2,4 +2,4 @@
 
 
 
-repositor for collaborative efforts exploring TM1Py from Cubewise
+repository for collaborative efforts exploring TM1Py from Cubewise
