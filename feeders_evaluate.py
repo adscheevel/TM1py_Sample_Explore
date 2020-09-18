@@ -50,11 +50,11 @@ if bPass == True:
     for entry in logs:
         if entry['Logger'] == 'TM1.Server' and 'TM1CubeImpl::ProcessFeeders' in entry['Message'] and 'Done computing feeders for base cube' in entry['Message']:
             sCube = entry['Message'][entry['Message'].find('base cube')+11:-2]
-            msg_list[sCube] = round(int(entry['Message'][31:entry['Message'].find('ms)')]) * .001, 2)
+            msg_list[sCube] = round((int(entry['Message'][31:entry['Message'].find('ms)')]) * .001) / 60, 2)
 
-    df = pd.DataFrame.from_dict(data=msg_list, orient='index', columns=['Time'])
+    df = pd.DataFrame.from_dict(data=msg_list, orient='index', columns=['Minutes'])
 
     # show chart
-    fig1 = px.bar(df.sort_values(by='Time', ascending=False).head(25))
+    fig1 = px.bar(df.sort_values(by='Minutes', ascending=False).head(25))
     fig1.show()
 
